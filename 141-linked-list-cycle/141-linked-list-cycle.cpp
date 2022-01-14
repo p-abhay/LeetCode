@@ -23,3 +23,4 @@ public:
         return false;
     }
 };
+//Another solution using hashMap

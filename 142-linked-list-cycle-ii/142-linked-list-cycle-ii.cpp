@@ -24,7 +24,7 @@ public:
         }
         if(slow!=fast)
             return nullptr;
-        
+        //floyd cycle detection
         slow=head;
         while(slow!=fast) {
             slow=slow->next;
@@ -34,3 +34,4 @@ public:
         
     }
 };
+//Another solution using hashMap

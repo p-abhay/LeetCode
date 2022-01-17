@@ -11,32 +11,33 @@ public:
         mp.insert({'M',1000});
         
         int ans=0;
-        for(int i=0;i<s.size();i++) {
-            if(s[i]=='C') {
-                if(s[i+1]=='D' || s[i+1]=='M') {
+        for(int i=0;i<s.size()-1;i++)
+        {
+            if(s[i]=='C') 
+            {
+                if(s[i+1]=='D' || s[i+1]=='M') 
                     ans+=-100;
-                }else {
+                else
                     ans+=100;
-                }
             }
-            else if(s[i]=='X') {
-                if(s[i+1]=='L' || s[i+1]=='C') {
+            else if(s[i]=='X') 
+            {
+                if(s[i+1]=='L' || s[i+1]=='C')
                     ans+=-10;
-                }else {
+                else 
                     ans+=10;
-                }
             }
-            else if(s[i]=='I') {
-                if(s[i+1]=='X' || s[i+1]=='V') {
+            else if(s[i]=='I') 
+            {
+                if(s[i+1]=='X' || s[i+1]=='V') 
                     ans+=-1;
-                }else {
+                else 
                     ans+=1;
-                }
             }
-            else {
+            else 
                 ans+=mp[s[i]];
-            }
         }
+        ans+=mp[s[s.size()-1]];
         return ans;
     }
 };

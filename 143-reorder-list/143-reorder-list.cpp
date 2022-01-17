@@ -10,9 +10,8 @@
  */
 class Solution {
 public:
-    void reorderList(ListNode* head) {
-        //Calculate Mid
-        ListNode* first=head;
+    ListNode* midOfLinkedList(ListNode* head)
+    {
         ListNode* slow=head;
         ListNode* fast=head;
         
@@ -21,8 +20,11 @@ public:
             slow=slow->next;
             fast=fast->next->next;
         }
-        //Reverse from mid to end of the list
-        ListNode* curr=slow;
+        return slow;
+    }
+    ListNode* reverse(ListNode* head)
+    {
+        ListNode* curr=head;
         ListNode* prev=nullptr;
         ListNode* next=nullptr;
         while(curr!=nullptr)
@@ -32,7 +34,13 @@ public:
             prev=curr;
             curr=next;
         }
-        ListNode* second=prev;
+        return prev;
+    }
+    void reorderList(ListNode* head) {
+        
+        ListNode* mid=midOfLinkedList(head);
+        ListNode* first=head;
+        ListNode* second=reverse(mid);
         while(second->next!=nullptr)
         {
             ListNode* temp=first->next;

@@ -76,6 +76,10 @@ public:
         
         while(temp!=nullptr)
         {
+            //A->A'->B->B'->C->C'->nullptr
+            //becomes A->B->C->nullptr and
+            //A'->B'->C'->nullptr
+
             node->next = node->next->next;
             if(temp->next != nullptr)
                 temp->next = temp->next->next;

@@ -22,14 +22,18 @@ public:
             return nullptr;
         
         Node* node=head;
-        /*
+        
         map<Node*,Node*> mp;
+        //creating a map of node:new node with same value
         while(node!=nullptr)
         {
-            Node* temp = new Node(head->val);
+            Node* temp = new Node(node->val);
             mp[node] = temp;
             node = node->next;
         }
+        //changing random and next pointers
+        //mp[node] is newnode so newnode->next becomes mp[node->next] which is 2nd newnode
+        
         node=head;
         while(node!=nullptr)
         {
@@ -44,8 +48,10 @@ public:
             
             node=node->next;
         }
-        return mp[head];*/
+        return mp[head];
         
+        //without using extra space TC-O(n) and space-O(1)
+        /*
         //step1 creating A->A'->B->B'->C->C'->nullptr
         
         while(node!=nullptr)
@@ -87,6 +93,6 @@ public:
             node = node->next;
             temp = temp->next;
         }
-        return result;
+        return result;*/
     }
 };

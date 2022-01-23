@@ -10,11 +10,12 @@ public:
             for(int j=i+1;j<10;j++)
             {
                 st = st*10 + j;
-                ans.push_back(st);
+                if(st >=low and st<=high)
+                    ans.push_back(st);
             }
         }
         sort(ans.begin(),ans.end());
-        for(auto itr = ans.begin();itr!=ans.end();itr++)
+        /*for(auto itr = ans.begin();itr!=ans.end();itr++)
         {
             //cout<<*itr<<" ";
             if((*itr >= low) and (*itr <=high))
@@ -25,7 +26,7 @@ public:
                 --itr;
             }
                 
-        }
+        }*/
             
         
         return ans;

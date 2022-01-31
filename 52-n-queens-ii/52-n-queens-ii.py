@@ -1,16 +1,10 @@
 class Solution:
     def totalNQueens(self, n: int) -> List[List[str]]:
         
-        def arrange_board(board):
-            new_board = []
-            for row in board:
-                new_board.append("".join(row))
-            return new_board
-        
         def solve(row, cols, diagonals, anti_diagonals, board):
             if row == n:
-                ans.append(arrange_board(board))
-                return
+                ans.append(1)
+                return 
             
             for col in range(n):
                 curr_diag = row - col
@@ -35,4 +29,4 @@ class Solution:
         initial_board = [["."]*n for i in range(n)]
         solve(0, set(), set(), set(), initial_board)
         
-        return len(ans)
+        return sum(ans)

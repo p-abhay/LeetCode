@@ -11,24 +11,33 @@
  */
 class Solution {
 public:
+    int l = 0;
     bool findTarget(TreeNode* root, int k) {
-        vector<int> inOrd;
-        inOrder(root, inOrd);
+        //vector<int> inOrd;
+        bool ans = false;
         map<int, int> mp;
-        for(int i = 0; i < inOrd.size(); i++) {
+        inOrder(root, mp, ans, k);
+        
+        /*for(int i = 0; i < inOrd.size(); i++) {
             if(mp.find(k - inOrd[i]) != mp.end())
                 return true;
             else
                 mp[inOrd[i]] = i;
-        }
-        return false;
+        }*/
+        return ans;
     }
 private:
-    void inOrder(TreeNode* root, vector<int>& inOrd) {
+    void inOrder(TreeNode* root, map<int, int>& mp, bool &ans, int k) {
         if(root == nullptr)
             return;
-        inOrder(root->left, inOrd);
-        inOrd.push_back(root->val);
-        inOrder(root->right, inOrd);
+        inOrder(root->left, mp, ans, k);
+        if(mp.find(k - root->val) != mp.end()) {
+            ans = true;
+            return;
+        }
+        else
+            mp[root->val] = l++;
+            
+        inOrder(root->right, mp, ans, k);
     }
 };

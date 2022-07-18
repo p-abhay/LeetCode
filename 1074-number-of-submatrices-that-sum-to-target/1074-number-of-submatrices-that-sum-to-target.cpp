@@ -10,7 +10,7 @@ public:
             }
         }
         int ans = 0;
-        map<int, int> mp;
+        unordered_map<int, int> mp;
         for(int c1 = 0; c1 < n; c1++) {
             for(int c2 = c1; c2 < n; c2++) {
                 

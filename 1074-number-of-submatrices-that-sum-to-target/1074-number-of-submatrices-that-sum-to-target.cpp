@@ -10,11 +10,11 @@ public:
             }
         }
         int ans = 0;
-        
+        map<int, int> mp;
         for(int c1 = 0; c1 < n; c1++) {
             for(int c2 = c1; c2 < n; c2++) {
-                map<int, int> mp;
-                mp[0] = 1;
+                
+                mp = {{0,1}};
                 int sum = 0;
                 for(int row = 0; row < m; row++) {
                     sum += matrix[row][c2] - (c1 > 0 ? matrix[row][c1-1] : 0);

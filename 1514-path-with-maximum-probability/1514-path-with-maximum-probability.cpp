@@ -13,22 +13,23 @@ public:
         priority_queue<pair<double,int>> pq;
         prob[start] = 1.0;
         pq.push({prob[start],start});
-        vector<int> visited(n,0);
+        //vector<int> visited(n,0);
         while(!pq.empty())
         {
             int node = pq.top().second;
             double probb = pq.top().first;
             pq.pop();
-            if(!visited[node]) {
-                visited[node]++;
+            //if(!visited[node]) {
+                //visited[node]++;
                 for(int i = 0; i < adj[node].size(); i++) {
                     int currNode = adj[node][i].first;
                     double currProb = adj[node][i].second;
-                    if(prob[currNode] < (probb*currProb))
+                    if(prob[currNode] < (probb*currProb)) {
                         prob[currNode] = probb*currProb;
                         pq.push({prob[currNode],currNode});
+                    }
                 }
-            }
+            //}
             
         }
         return prob[end];

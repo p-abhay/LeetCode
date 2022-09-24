@@ -21,14 +21,14 @@ public:
         //cout<<targetSum<<"\n";
         if(root == nullptr)
             return;
-        if(root->left == nullptr && root->right == nullptr && (targetSum-root->val) == 0) {
-            path.push_back(root->val);
+         
+        path.push_back(root->val);
+        int sum = targetSum - root->val;
+        if(root->left == nullptr && root->right == nullptr && sum == 0) {
             paths.push_back(path);
             path.pop_back();
             return;
-        } 
-        path.push_back(root->val);
-        int sum = targetSum - root->val;
+        }
         dfs(root->left,sum,path,paths);
         dfs(root->right,sum,path,paths);
         path.pop_back();

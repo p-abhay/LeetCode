@@ -25,7 +25,7 @@ public:
             s[i] = 'a';
             
             if(!check(s)) {
-                cout<<s<<" ";
+                //cout<<s<<" ";
                 return s;
             }
                 

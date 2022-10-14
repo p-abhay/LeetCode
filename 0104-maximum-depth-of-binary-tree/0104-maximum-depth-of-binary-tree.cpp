@@ -15,7 +15,17 @@ public:
         if(root == nullptr)
             return 0;
         int depth = 0;
-        bfs(root,depth);
+        //bfs(root,depth);
+        depth = dfs(root);
+        return depth;
+    }
+    int dfs(TreeNode* root) {
+        int depth = 0;
+        if(root == nullptr)
+            return 0;
+        int left = dfs(root->left);
+        int right = dfs(root->right);
+        depth += 1 + max(left,right);
         return depth;
     }
     void bfs(TreeNode* root,int& depth) {

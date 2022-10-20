@@ -11,17 +11,38 @@
 class Solution {
 public:
     int pairSum(ListNode* head) {
-        int ans = INT_MIN;
-        vector<int> v;
-        ListNode* temp = head;
-        while(temp != nullptr) {
-            v.push_back(temp->val);
-            temp = temp->next;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        int l = 0,r = v.size()-1;
-        while(l < r) {
-            ans = max(ans,v[l++]+v[r--]);
+        //cout<<slow->val<<" ";
+        reverse(slow);
+        // cout<<slow->val<<" ";
+        // while(slow) {
+        //     cout<<slow->val<<" ";
+        //     slow = slow->next;
+        // }
+        int ans = INT_MIN,sum = 0;
+        while(head && slow) {
+            sum = head->val + slow->val;
+            ans = max(ans,sum);
+            head = head->next;
+            slow = slow->next;
         }
         return ans;
     }
+    void reverse(ListNode* &head) {
+        ListNode* prev = nullptr ;
+        ListNode* curr = head;
+        ListNode* next = head;
+        while(curr) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    } 
 };

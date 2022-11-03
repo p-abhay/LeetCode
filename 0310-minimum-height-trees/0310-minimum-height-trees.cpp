@@ -37,6 +37,7 @@ public:
                 auto itr = find(graph[con[0]].begin(),graph[con[0]].end(),x);
                 if(itr != graph[con[0]].end())
                     graph[con[0]].erase(itr);
+                degree[x] -= 1;
                 degree[con[0]] -= 1;
                 if(degree[con[0]] == 1)
                     q.push(con[0]);
